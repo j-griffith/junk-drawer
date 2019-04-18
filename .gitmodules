@@ -1,0 +1,3 @@
+[submodule "rook-deploy/rook"]
+	path = rook-deploy/rook
+	url = https://github.com/rook/rook
