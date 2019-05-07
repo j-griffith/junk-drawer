@@ -69,7 +69,7 @@ provisioner: rbd.csi.ceph.com
 parameters:
     # Comma separated list of Ceph monitors
     # if using FQDN, make sure csi plugin's dns policy is appropriate.
-	monitors: $MONA:6789,$MONB:6789,$MONC:6789  
+    monitors: $MONA:6789,$MONB:6789,$MONC:6789  
 
     # if "monitors" parameter is not set, driver to get monitors from same
     # secret as admin/user credentials. "monValueFromSecret" provides the
