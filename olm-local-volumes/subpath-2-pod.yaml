@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-2
+spec:
+  containers:
+    - name: my-container
+      image: busybox
+      command:
+        - sleep
+        - "300"
+      volumeMounts:
+      - name: my-volume
+        mountPath: /data-1
+        subPath: data-2
+      imagePullPolicy: IfNotPresent
+  volumes:
+    - name: my-volume
+      persistentVolumeClaim:
+        claimName: example-local-claim
+

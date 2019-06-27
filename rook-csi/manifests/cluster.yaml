@@ -92,8 +92,9 @@ spec:
   storage: # cluster level storage configuration and selection
     useAllNodes: true
     useAllDevices: false
-    location:
-    config:
+    deviceFilter: "vdb"
+    #location:
+    #config:
       # The default and recommended storeType is dynamically set to bluestore for devices and filestore for directories.
       # Set the storeType explicitly only if it is required not to use the default.
       # storeType: bluestore
@@ -101,8 +102,8 @@ spec:
       # journalSizeMB: "1024"  # uncomment if the disks are 20 GB or smaller
       # osdsPerDevice: "1" # this value can be overridden at the node or device level
       # encryptedDevice: "true" # the default value for this option is "false"
-    devices:
-      - name: "vdc"
+      #  devices:
+      #  - name: "vdb"
 # Cluster level list of directories to use for filestore-based OSD storage. If uncommented, this example would create an OSD under the dataDirHostPath.
     #directories:
     #- path: /var/lib/rook
