@@ -8,17 +8,17 @@ then
   exit
 fi
 
-cat << EOF | kubectl create -f -
-apiVersion: ceph.rook.io/v1
-kind: CephBlockPool
-metadata:
-  name: rbd
-  namespace: rook-ceph
-spec:
-  failureDomain: host
-  replicated:
-    size: 3
-EOF
+#cat << EOF | kubectl create -f -
+#apiVersion: ceph.rook.io/v1
+#kind: CephBlockPool
+#metadata:
+#  name: rbd
+#  namespace: rook-ceph
+#spec:
+#  failureDomain: host
+#  replicated:
+#    size: 3
+#EOF
 
 (pod=$(kubectl get pod  -n rook-ceph -l app=rook-ceph-operator  -o jsonpath="{.items[0].metadata.name}"); kubectl exec -ti -n rook-ceph ${pod} -- bash -c "ceph -c /var/lib/rook/rook-ceph/rook-ceph.config auth get-or-create-key client.kubernetes mon \"allow profile rbd\" osd \"profile rbd pool=rbd\"")
 

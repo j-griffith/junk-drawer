@@ -1,4 +1,4 @@
-apiVersion: "local.storage.openshift.io/v1alpha1"
+apiVersion: "local.storage.openshift.io/v1"
 kind: "LocalVolume"
 metadata:
   name: "local-disks"
@@ -10,13 +10,11 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - ip-10-0-140-102
-          - ip-10-0-141-163
-          - ip-10-0-159-28
-
+          - kube-1
+          - kube-2 
+          - kube-3 
   storageClassDevices:
     - storageClassName: "local-sc"
-      volumeMode: Filesystem
-      fsType: xfs
-      deviceNames:
-       - xvdf
+      volumeMode: Block
+      devicePaths:
+        - /dev/vdb
