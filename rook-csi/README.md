@@ -7,3 +7,8 @@ I'll get this updated shortly, plan is to:
    This is slightly annoying becuase I typically like to modify the deployment.  I don't want rook/ceph greedily consuming all my disks and i personally have zero interest in cephfs which is on by default.
 
 2. Update the finalize script  
+
+
+# July 9, 2019
+
+Pushed quite a few updates, rook has changed considerably and things were very broken; there's still something not quite write with my admin_key it seems.. need to get to the bottom of that, but fetching on the operator pod with `ceph auth get client.admin 2>&1 |grep "key = " |awk '{print  $3'} |xargs echo -n > /tmp/key` and then create secrets with:  `kubectl create secret generic ceph-admin-secret --from-file=/tmp/key --namespace=kube-system --type=kubernetes.io/rbd`  seems to work.
