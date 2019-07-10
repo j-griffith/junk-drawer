@@ -9,7 +9,7 @@ then
 fi
 
 echo "Deploying CEPH Cluster using $PLATFORM..."
-kubectl apply -f manifests/csi-rbac.yaml
-#kubectl -n rook-ceph create configmap csi-rbd-config --from-file="manifests/config-template.yaml"
+kubectl apply -f manifests/csi-nodeplugin-rbac.yaml
+kubectl apply -f manifests/csi-provisioner-rbac.yaml
 kubectl create -f manifests/toolbox.yaml
 kubectl apply -f manifests/operator-with-csi.yaml

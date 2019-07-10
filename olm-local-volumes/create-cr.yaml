@@ -1,7 +1,7 @@
-apiVersion: "local.storage.openshift.io/v1alpha1"
+apiVersion: "local.storage.openshift.io/v1"
 kind: "LocalVolume"
 metadata:
-  name: "local-disks"
+  name: "localfs-disks"
   namespace: local-storage
 spec:
   nodeSelector:
@@ -14,8 +14,8 @@ spec:
           - kube-2 
           - kube-3 
   storageClassDevices:
-    - storageClassName: "local-sc"
+    - storageClassName: "localfs-sc"
       volumeMode: Filesystem
       fsType: xfs
       devicePaths:
-        - /dev/vdb
+        - /dev/vdc

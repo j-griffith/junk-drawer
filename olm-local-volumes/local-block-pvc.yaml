@@ -1,9 +1,10 @@
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: fs-local-claim
+  name: block-pvc-1
 spec:
-  storageClassName: localfs-sc
+  storageClassName: local-sc
+  volumeMode: Block
   accessModes:
   - ReadWriteOnce
   resources:
